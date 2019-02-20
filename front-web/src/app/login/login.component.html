@@ -1,0 +1,19 @@
+
+<div *ngIf = "!notlogin">
+<div *ngIf = "!login" class = "container largura  ">
+  <form [formGroup]="formLogin" (ngSubmit)="logar()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Usuário</label>
+      <input formControlName="LOGIN" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha</label>
+      <input formControlName="SENHA" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Logar</button> <span (click)="cadastro()" class="ml-3">Cadastrar</span>
+  </form>
+</div>
+</div>
+
+<app-home *ngIf = "login"></app-home>
+<app-cadastro *ngIf = "cadastrar"></app-cadastro>

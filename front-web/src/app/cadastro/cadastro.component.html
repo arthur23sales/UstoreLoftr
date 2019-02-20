@@ -1,0 +1,34 @@
+<div class="container">
+    <form [formGroup]="formCadastro" (ngSubimt)="cadastrar()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Nome</label>
+                <input formControlName="LOGIN" type="email" class="form-control" id="inputEmail4" placeholder="Login">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Senha</label>
+                <input formControlName="SENHA" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputState">Goblins</label>
+                <select formControlName="RACA" id="inputState" class="form-control">
+                    <option selected disabled>Goblin</option>
+                    <option value="uruk">Uruk-hais</option>
+                    <option value="snagas">Snagas</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Cidade</label>
+                <select formControlName="CIDADE" id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option value = "rohan">Rohan</option>
+                    <option value = "orthanc">Orthanc</option>
+                    <option value = "isengard">Isengard</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button> <button (click)="voltar()" type="button" class="btn">Voltar</button>
+    </form>
+</div>
