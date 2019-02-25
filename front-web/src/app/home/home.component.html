@@ -1,53 +1,102 @@
+<!--botão para deslogar-->
 <div *ngIf="!desloga" class="row">
   <div class="col-md-11 ">
-   
   </div>
   <div class="col-md-1">
-    <i (click)="deslogar()"class=" material-icons">
+    <i (click)="deslogar()" class=" material-icons">
       power_settings_new
     </i>
   </div>
 </div>
 
+
+<!--cidades-->
 <app-login *ngIf="desloga"></app-login>
 <div *ngIf="!desloga">
-<div class="card-group container">
-  <div class="card">
-    <img src="../../assets/img/Orthanc.jpg" class="card-img-top imagem" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Orthanc</h5>
-      <p class="card-text"></p>
-      <select (change)="enviandoOrc($event.target.value)">
-        <option>Orc 1</option>
-        <option>Orc 2</option>
-    </select>
-    <button (click)="enviar()" type="submit" class="btn btn-primary ml-5">Enviar</button>
+  <div class="card-group container">
+    <div class="card">
+      <img src="../../assets/img/Orthanc.jpg" class="card-img-top imagem" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Orthanc</h5>
+        <p class="card-text"></p>
+        <select (change)="enviandoOrc($event.target.value)">
+          <option>Orc 1</option>
+          <option>Orc 2</option>
+        </select>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../../assets/img/isengard.jpg" class="card-img-top imagem" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Isengard</h5>
+        <p class="card-text"></p>
+        <select (change)="enviandoOrc($event.target.value)">
+          <option>Orc 1</option>
+          <option>Orc 2</option>
+        </select>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../../assets/img/rohan.jpg" class="card-img-top imagem" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Rohan</h5>
+        <p class="card-text"></p>
+        <select (change)="enviandoOrc($event.target.value)">
+          <option>Orc 1</option>
+          <option>Orc 2</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <img src="../../assets/img/isengard.jpg" class="card-img-top imagem" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Isengard</h5>
-      <p class="card-text"></p>
-      <select  (change)="enviandoOrc($event.target.value)">
-        <option>Orc 1</option>
-        <option>Orc 2</option>
-    </select>
-    <button (click)="enviar()" type="submit" class="btn btn-primary ml-5">Enviar</button>
+
+  <div class="row">
+    <div style="text-align: center;" class="col align-self-end mt-3">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGoblin">
+        Enviar
+      </button>
     </div>
   </div>
-  <div class="card">
-    <img src="../../assets/img/rohan.jpg" class="card-img-top imagem" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Rohan</h5>
-      <p class="card-text"></p>
-      <select  (change)="enviandoOrc($event.target.value)">
-        <option>Orc 1</option>
-        <option>Orc 2</option>
-    </select>
-    <button (click)="enviar()" type="submit" class="btn btn-primary ml-5">Enviar</button>
-    
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalGoblin" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">
+            <select (change)="selectCidade($event.target.value)" class="custom-select">
+              <option selected>Selecione a Cidade</option>
+              <option value="1">Orthanc</option>
+              <option value="2">Isengard</option>
+              <option value="3">Rohan</option>
+            </select>
+          </div>
+          <div *ngFor="let goblin of listaGoblins  ">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input class="form-check-input" (click)="selectedGoblin(goblin.id)"type="checkbox" value="{goblin.id}" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    {{goblin.name}}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button (click)="enviar(goblinselecionado)" type="button" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
-</div>
+
 </div>
