@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   usuario = [{ nome: "saruman", senha: "admin", tipo: "adm" },
   { nome: "orc1", senha: "orc1", tipo: "orc" },
   { nome: "orc2", senha: "orc2", tipo: "orc" }]
-  login = true;
+  login = false;
   cadastrar = false;
   notlogin = false;
   

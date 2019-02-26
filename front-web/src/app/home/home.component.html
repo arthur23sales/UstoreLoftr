@@ -19,21 +19,29 @@
       <div class="card-body">
         <h5 class="card-title">Orthanc</h5>
         <p class="card-text"></p>
-        <select (change)="enviandoOrc($event.target.value)">
-          <option>Orc 1</option>
-          <option>Orc 2</option>
-        </select>
+        <div *ngFor="let goblinOrthanc of listaGoblinsOrthanc">
+          <ul class="list-group">
+            <li class="list-group-item">
+              {{goblinOrthanc.nome}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    
     <div class="card">
       <img src="../../assets/img/isengard.jpg" class="card-img-top imagem" alt="...">
       <div class="card-body">
         <h5 class="card-title">Isengard</h5>
         <p class="card-text"></p>
-        <select (change)="enviandoOrc($event.target.value)">
-          <option>Orc 1</option>
-          <option>Orc 2</option>
-        </select>
+        <div *ngFor="let goblinIsengar of listaGoblinsIsengar">
+          <ul class="list-group">
+            <li class="list-group-item">
+              {{goblinIsengar.nome}}
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
     <div class="card">
@@ -41,10 +49,13 @@
       <div class="card-body">
         <h5 class="card-title">Rohan</h5>
         <p class="card-text"></p>
-        <select (change)="enviandoOrc($event.target.value)">
-          <option>Orc 1</option>
-          <option>Orc 2</option>
-        </select>
+        <div *ngFor="let goblinRohan of listaGoblinsRohan">
+          <ul class="list-group">
+            <li class="list-group-item">
+              {{goblinRohan.nome}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -56,13 +67,14 @@
       </button>
     </div>
   </div>
-  
+
   <!-- Modal -->
-  <div class="modal fade" id="modalGoblin" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal fade" id="modalGoblin" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Enviar Goblins</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,18 +92,19 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <div class="form-check">
-                  <input class="form-check-input" (click)="selectedGoblin(goblin.id)"type="checkbox" value="{goblin.id}" id="defaultCheck1">
+                  <input  class="form-check-input" [disabled]="desabilitado" (click)="selectedGoblin(goblin)" [checked]="goblin.checked" type="checkbox"
+                    value="{goblin.checked}" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
-                    {{goblin.name}}
+                    {{goblin.nome}}
                   </label>
                 </div>
               </li>
             </ul>
           </div>
-           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button (click)="enviar(goblinselecionado)" type="button" class="btn btn-primary">Enviar</button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)=fechar() data-dismiss="modal">Fechar</button>
+            <button (click)="enviar(goblinselecionado)" type="button" class="btn btn-primary">Enviar</button>
+          </div>
         </div>
 
 
